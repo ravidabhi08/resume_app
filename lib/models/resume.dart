@@ -9,10 +9,11 @@ class Resume with _$Resume {
     required String name,
     required String email,
     required String phone,
-    required String dOB,
+    required String dob, // Changed from dOB to dob
     required String hobby,
-    required List<String> skills,
-    required List<String> experiences,
+    String? image, // Nullable image field
+    @Default([]) List<String> skills, // Default empty list to avoid null issues
+    @Default([]) List<String> experiences,
   }) = _Resume;
 
   factory Resume.fromJson(Map<String, dynamic> json) => _$ResumeFromJson(json);

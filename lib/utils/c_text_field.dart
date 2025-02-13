@@ -22,6 +22,7 @@ class CTextField extends ConsumerWidget {
   final void Function(String)? onChanged;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
+  final Widget? prefixIcon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -35,6 +36,7 @@ class CTextField extends ConsumerWidget {
     this.showBorders = true,
     this.labelText,
     this.hintText,
+    this.prefixIcon,
     this.suffixText,
     this.suffixIcon,
     this.inputFormatters,

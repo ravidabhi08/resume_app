@@ -10,13 +10,17 @@ _$ResumeImpl _$$ResumeImplFromJson(Map<String, dynamic> json) => _$ResumeImpl(
       name: json['name'] as String,
       email: json['email'] as String,
       phone: json['phone'] as String,
-      dOB: json['dOB'] as String,
+      dob: json['dob'] as String,
       hobby: json['hobby'] as String,
-      skills:
-          (json['skills'] as List<dynamic>).map((e) => e as String).toList(),
-      experiences: (json['experiences'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      image: json['image'] as String?,
+      skills: (json['skills'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      experiences: (json['experiences'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$ResumeImplToJson(_$ResumeImpl instance) =>
@@ -24,8 +28,9 @@ Map<String, dynamic> _$$ResumeImplToJson(_$ResumeImpl instance) =>
       'name': instance.name,
       'email': instance.email,
       'phone': instance.phone,
-      'dOB': instance.dOB,
+      'dob': instance.dob,
       'hobby': instance.hobby,
+      'image': instance.image,
       'skills': instance.skills,
       'experiences': instance.experiences,
     };

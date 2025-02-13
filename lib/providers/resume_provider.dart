@@ -6,9 +6,11 @@ final resumeProvider = StateProvider<Resume>((ref) {
     name: '',
     email: '',
     phone: '',
-    skills: [],
-    dOB: '',
+    dob: '', // Changed from dOB to dob
     hobby: '',
+    image: null, // Nullable image field
+    skills: [],
     experiences: [],
   );
 });
+

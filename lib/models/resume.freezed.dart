@@ -23,9 +23,13 @@ mixin _$Resume {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String get dOB => throw _privateConstructorUsedError;
+  String get dob =>
+      throw _privateConstructorUsedError; // Changed from dOB to dob
   String get hobby => throw _privateConstructorUsedError;
-  List<String> get skills => throw _privateConstructorUsedError;
+  String? get image =>
+      throw _privateConstructorUsedError; // Nullable image field
+  List<String> get skills =>
+      throw _privateConstructorUsedError; // Default empty list to avoid null issues
   List<String> get experiences => throw _privateConstructorUsedError;
 
   /// Serializes this Resume to a JSON map.
@@ -46,8 +50,9 @@ abstract class $ResumeCopyWith<$Res> {
       {String name,
       String email,
       String phone,
-      String dOB,
+      String dob,
       String hobby,
+      String? image,
       List<String> skills,
       List<String> experiences});
 }
@@ -70,8 +75,9 @@ class _$ResumeCopyWithImpl<$Res, $Val extends Resume>
     Object? name = null,
     Object? email = null,
     Object? phone = null,
-    Object? dOB = null,
+    Object? dob = null,
     Object? hobby = null,
+    Object? image = freezed,
     Object? skills = null,
     Object? experiences = null,
   }) {
@@ -88,14 +94,18 @@ class _$ResumeCopyWithImpl<$Res, $Val extends Resume>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      dOB: null == dOB
-          ? _value.dOB
-          : dOB // ignore: cast_nullable_to_non_nullable
+      dob: null == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
               as String,
       hobby: null == hobby
           ? _value.hobby
           : hobby // ignore: cast_nullable_to_non_nullable
               as String,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       skills: null == skills
           ? _value.skills
           : skills // ignore: cast_nullable_to_non_nullable
@@ -119,8 +129,9 @@ abstract class _$$ResumeImplCopyWith<$Res> implements $ResumeCopyWith<$Res> {
       {String name,
       String email,
       String phone,
-      String dOB,
+      String dob,
       String hobby,
+      String? image,
       List<String> skills,
       List<String> experiences});
 }
@@ -141,8 +152,9 @@ class __$$ResumeImplCopyWithImpl<$Res>
     Object? name = null,
     Object? email = null,
     Object? phone = null,
-    Object? dOB = null,
+    Object? dob = null,
     Object? hobby = null,
+    Object? image = freezed,
     Object? skills = null,
     Object? experiences = null,
   }) {
@@ -159,14 +171,18 @@ class __$$ResumeImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      dOB: null == dOB
-          ? _value.dOB
-          : dOB // ignore: cast_nullable_to_non_nullable
+      dob: null == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
               as String,
       hobby: null == hobby
           ? _value.hobby
           : hobby // ignore: cast_nullable_to_non_nullable
               as String,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       skills: null == skills
           ? _value._skills
           : skills // ignore: cast_nullable_to_non_nullable
@@ -186,10 +202,11 @@ class _$ResumeImpl implements _Resume {
       {required this.name,
       required this.email,
       required this.phone,
-      required this.dOB,
+      required this.dob,
       required this.hobby,
-      required final List<String> skills,
-      required final List<String> experiences})
+      this.image,
+      final List<String> skills = const [],
+      final List<String> experiences = const []})
       : _skills = skills,
         _experiences = experiences;
 
@@ -203,19 +220,28 @@ class _$ResumeImpl implements _Resume {
   @override
   final String phone;
   @override
-  final String dOB;
+  final String dob;
+// Changed from dOB to dob
   @override
   final String hobby;
-  final List<String> _skills;
   @override
+  final String? image;
+// Nullable image field
+  final List<String> _skills;
+// Nullable image field
+  @override
+  @JsonKey()
   List<String> get skills {
     if (_skills is EqualUnmodifiableListView) return _skills;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_skills);
   }
 
+// Default empty list to avoid null issues
   final List<String> _experiences;
+// Default empty list to avoid null issues
   @override
+  @JsonKey()
   List<String> get experiences {
     if (_experiences is EqualUnmodifiableListView) return _experiences;
     // ignore: implicit_dynamic_type
@@ -224,7 +250,7 @@ class _$ResumeImpl implements _Resume {
 
   @override
   String toString() {
-    return 'Resume(name: $name, email: $email, phone: $phone, dOB: $dOB, hobby: $hobby, skills: $skills, experiences: $experiences)';
+    return 'Resume(name: $name, email: $email, phone: $phone, dob: $dob, hobby: $hobby, image: $image, skills: $skills, experiences: $experiences)';
   }
 
   @override
@@ -235,8 +261,9 @@ class _$ResumeImpl implements _Resume {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.dOB, dOB) || other.dOB == dOB) &&
+            (identical(other.dob, dob) || other.dob == dob) &&
             (identical(other.hobby, hobby) || other.hobby == hobby) &&
+            (identical(other.image, image) || other.image == image) &&
             const DeepCollectionEquality().equals(other._skills, _skills) &&
             const DeepCollectionEquality()
                 .equals(other._experiences, _experiences));
@@ -249,8 +276,9 @@ class _$ResumeImpl implements _Resume {
       name,
       email,
       phone,
-      dOB,
+      dob,
       hobby,
+      image,
       const DeepCollectionEquality().hash(_skills),
       const DeepCollectionEquality().hash(_experiences));
 
@@ -275,10 +303,11 @@ abstract class _Resume implements Resume {
       {required final String name,
       required final String email,
       required final String phone,
-      required final String dOB,
+      required final String dob,
       required final String hobby,
-      required final List<String> skills,
-      required final List<String> experiences}) = _$ResumeImpl;
+      final String? image,
+      final List<String> skills,
+      final List<String> experiences}) = _$ResumeImpl;
 
   factory _Resume.fromJson(Map<String, dynamic> json) = _$ResumeImpl.fromJson;
 
@@ -289,11 +318,13 @@ abstract class _Resume implements Resume {
   @override
   String get phone;
   @override
-  String get dOB;
+  String get dob; // Changed from dOB to dob
   @override
   String get hobby;
   @override
-  List<String> get skills;
+  String? get image; // Nullable image field
+  @override
+  List<String> get skills; // Default empty list to avoid null issues
   @override
   List<String> get experiences;
 
