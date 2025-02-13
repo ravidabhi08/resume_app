@@ -35,6 +35,7 @@ class ResumeFormScreen extends ConsumerStatefulWidget {
   const ResumeFormScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ResumeFormScreenState createState() => _ResumeFormScreenState();
 }
 
@@ -45,7 +46,6 @@ class _ResumeFormScreenState extends ConsumerState<ResumeFormScreen> {
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController phoneController;
-  // final dobController = TextEditingController();
   late TextEditingController hobbyController;
   final skillsController = TextEditingController();
   final experienceController = TextEditingController();
@@ -58,7 +58,6 @@ class _ResumeFormScreenState extends ConsumerState<ResumeFormScreen> {
     nameController = TextEditingController(text: resume.name);
     emailController = TextEditingController(text: resume.email);
     phoneController = TextEditingController(text: resume.phone);
-    // dobController.text = resume.dob ?? '';
     hobbyController = TextEditingController(text: resume.hobby);
   }
 
@@ -67,7 +66,7 @@ class _ResumeFormScreenState extends ConsumerState<ResumeFormScreen> {
     nameController.dispose();
     emailController.dispose();
     phoneController.dispose();
-    // dobController.dispose();
+
     hobbyController.dispose();
     skillsController.dispose();
     experienceController.dispose();
@@ -173,21 +172,6 @@ class _ResumeFormScreenState extends ConsumerState<ResumeFormScreen> {
                       .update((state) => state.copyWith(phone: value)),
                 ),
                 const SizedBox(height: 15),
-                // CSelectDateTime(
-                //   selectedDate: selectedDate,
-                //   labelText: "Date of Birth",
-                //   onDateChanged: (DateTime newDate) {
-                //     setState(() => selectedDate = newDate);
-                //     ref
-                //         .read(resumeProvider.notifier)
-                //         .update((state) => state.copyWith(dob: newDate.toIso8601String()));
-                //   },
-                //   onClear: () {
-                //     setState(() => selectedDate = null);
-                //     ref.read(resumeProvider.notifier).update((state) => state.copyWith(dob: ''));
-                //   },
-                // ),
-                // const SizedBox(height: 15),
                 CTextField(
                   controller: hobbyController,
                   labelText: 'Hobby',
